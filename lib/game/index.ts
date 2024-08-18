@@ -19,8 +19,6 @@ let LAST_SITUATION = `
   Carrix si trova nel bosco, a un giorno di distanza dal vulcano.
 `
 
-let LIFE = 3
-
 type NewScenarioInput = {
   baseScenario?: string
   info?: string
@@ -28,6 +26,7 @@ type NewScenarioInput = {
   lastSituation?: string
   actions: string
   actionNumber: number
+  life: number
 }
 
 const getPromptForNewSituation = ({
@@ -37,8 +36,9 @@ const getPromptForNewSituation = ({
   lastSituation = LAST_SITUATION,
   actions,
   actionNumber,
+  life,
 }: NewScenarioInput): string => {
-  const output = getActionOutput()
+  const output = getActionOutput(life)
   console.log('\nAzione andata ' + output + '\n')
 
   return (
@@ -86,14 +86,14 @@ const getPromptForNewActions = ({
     Ritorna le azioni come lista numerata nel seguente formato: [fai questo]: [descrizione di cosa fai].
   `
 
-const getActionOutput = () => {
+const getActionOutput = (life: number) => {
   const randomNumberBetween1And10 = Math.random() * 10
 
   if (randomNumberBetween1And10 > 8) return 'bene'
   if (randomNumberBetween1And10 > 6) return 'normale'
   if (randomNumberBetween1And10 > 4) return 'normale'
   if (randomNumberBetween1And10 > 2) return 'male, ma non gravemente'
-  switch (LIFE) {
+  switch (life) {
     case 3:
       return 'molto male, e Carrix viene ferito'
     case 2:
