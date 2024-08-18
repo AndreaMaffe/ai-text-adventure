@@ -1,5 +1,9 @@
-import { NextResponse } from 'next/server';
+import { callAnthropic } from '@/lib/anthropic'
+import { NextRequest, NextResponse } from 'next/server'
 
-export async function GET() {
-  return NextResponse.json({ok: true})
+export async function POST(req: NextRequest) {
+  const { prompt } = await req.json()
+  const text = await callAnthropic(prompt)
+
+  return NextResponse.json({ text })
 }
