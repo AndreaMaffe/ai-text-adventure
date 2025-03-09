@@ -3,8 +3,12 @@
   "plugins": ["prettier"],
   "rules": {
     "object-curly-spacing": [2, "always"],
-    "prettier/prettier": ["error", {
-      "endOfLine": "auto"
-    }]
+    "no-unused-vars": "warn",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
   }
 }
