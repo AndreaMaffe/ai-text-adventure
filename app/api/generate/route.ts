@@ -2,7 +2,8 @@ import { callOpenRouter } from '@/lib/openrouter'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST(req: NextRequest) {
-  const { action, history, life, inventory, current_state } = await req.json()
+  const { action, history, life, inventory, current_state, player_info } =
+    await req.json()
 
   let jsonResponse
 
@@ -25,9 +26,9 @@ export async function POST(req: NextRequest) {
               player_info: {
                 life,
                 inventory,
-                name: 'Maffe',
-                race: 'Mezzorco',
-                class: 'Guerriero',
+                name: player_info.name,
+                race: player_info.race,
+                class: player_info.class,
               },
             }),
           },
