@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages'
-const ANTHROPIC_MODEL = 'claude-3-5-sonnet-20240620'
+const ANTHROPIC_MODEL = 'claude-3-opus-20240229'
 const ANTHROPIC_VERSION = '2023-06-01'
 
 async function callAnthropic(prompt: string) {
